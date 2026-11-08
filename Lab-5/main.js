@@ -98,7 +98,11 @@ geometry.computeVertexNormals();
 // color defines the object's color
 // roughness controls how smooth or rough the surface appears
 const mesh = new THREE.Mesh(geometry,
-    new THREE.MeshStandardMaterial({color: 0xf759a8, roughness: 0.4 })
+    new THREE.MeshStandardMaterial({
+    color: 0xf759a8,
+    roughness: 0.4,
+    side: THREE.FrontSide
+})
 )
 
 // Add the object to the scene
@@ -150,3 +154,14 @@ function animate()
 
 // Start the animation
 animate()
+
+
+/*
+    I created a 3D crystal using BufferGeometry. The crystal has 
+    6 vertices and 8 triangular faces. I used indexed geometry, 
+    where vertices are shared between faces. I also implemented 
+    a way to switch between indexed and non-indexed geometry by 
+    pressing the F key to compare smooth and flat shading. When 
+    a face has the wrong vertex order, its normal points inward, 
+    and the face may become invisible when using FrontSide rendering.
+*/
