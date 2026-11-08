@@ -24,21 +24,21 @@ document.body.appendChild(renderer.domElement);
 
 
 // Create a cube and add it to the scene.
-/* const cube=new THREE.Mesh(
-   new THREE.BoxGeometry(1.5,4,1.5),
+const cube=new THREE.Mesh(
+   new THREE.BoxGeometry(1.5,1.5,1.5),
    new THREE.MeshStandardMaterial({ color: 0xFFC0CB })
 );
-scene.add(cube); */
+scene.add(cube);
 
 
 // Create a sphere and add it to the scene.
 // Wireframe is a visual representation of a 3D object that shows only its 
 // edges and vertices, without any surface shading or textures. 
-const geometry = new THREE.SphereGeometry(1, 20, 20);
-const material = new THREE.MeshBasicMaterial({ color: 0xFF25A7 });
-const sphere = new THREE.Mesh(geometry, material);
-sphere.material.wireframe = true;
-scene.add(sphere);
+// const geometry = new THREE.SphereGeometry(1, 20, 20);
+// const material = new THREE.MeshBasicMaterial({ color: 0xFF25A7 });
+// const sphere = new THREE.Mesh(geometry, material);
+// sphere.material.wireframe = true;
+// scene.add(sphere);
 
 
 // Add an ambient light to the scene. 
@@ -56,8 +56,12 @@ function animate() {
    requestAnimationFrame(animate);
    timer.update();
    const dt = timer.getDelta();
-   sphere.rotation.x += dt * 0.5;
-   sphere.rotation.y += dt * 0.5;
+
+//   sphere.rotation.x += dt * 0.5;
+//   sphere.rotation.y += dt * 0.5;
+
+   cube.rotation.x += dt * 0.5;
+   cube.rotation.y += dt * 0.5;
 
    control.update();
    renderer.render(scene, camera);
