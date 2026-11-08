@@ -102,10 +102,11 @@ const fingers = [];
 const fingerGeo = new THREE.BoxGeometry(0.2, 1, 0.2);
 const fingerMaterial = new THREE.MeshStandardMaterial({ color: 0xffcc88 });
 
-for (let i = 0; i < 5; i++) {
+// Four fingers above the palm
+for (let i = 0; i < 4; i++) {
     const finger = new THREE.Mesh(fingerGeo, fingerMaterial);
 
-    finger.position.x = (i - 2) * 0.35;
+    finger.position.x = (i - 1.5) * 0.4;
     finger.position.y = 2.25;
     finger.position.z = 0;
 
@@ -113,6 +114,17 @@ for (let i = 0; i < 5; i++) {
     fingers.push(finger);
 }
 
+// Thumb on the left side of the palm
+const thumb = new THREE.Mesh(
+    new THREE.BoxGeometry(0.25, 0.8, 0.25),
+    fingerMaterial
+);
+
+thumb.position.set(-1.0, 1.0, 0);
+thumb.rotation.z = THREE.MathUtils.degToRad(45);
+
+wrist.add(thumb);
+fingers.push(thumb);
 
 window.addEventListener('keydown', (event) => {
     const step = THREE.MathUtils.degToRad(5);
